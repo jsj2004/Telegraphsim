@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>telegraph</title>
+
+    <link rel="stylesheet" href="telegraph.css">
+
+</head>
+ <script >
+ document.addEventListener("keydown",keypressup);
+function keypressup(event){
+    let ch= event.key;
+    if(65<=ch[0]<=90){
+        ch=ch.toLowerCase();
+    }
+    ch="#key"+ch;
+    let keyb=document.querySelector(ch);
+    keyb.style.transform= "translateY(20px)";
+    keyb.style.boxShadow= "0px 10px 5px black";
+}
+document.addEventListener("keyup",keypressdown);
+function keypressdown(event){
+    let ch= event.key;
+    if(65<=ch[0]<=90){
+        ch=ch.toLowerCase();
+    }
+    ch="#key"+ch;
+    let keyb=document.querySelector(ch);
+    keyb.style.transform= "translateY(0px)";
+    keyb.style.boxShadow= "0px 25px 5px rgb(78, 63, 42)";
+}
+
+ </script>
+ <script src="/keyboard.js"></script>
+     <script>
+    const keyvalue=new Map([['a',"dl"],
+                       ['b',"lddd"],
+                       ['c',"ldld"],
+                       ['d',"ldd"],
+                       ['e',"d"],
+                       ['f',"ddld"],
+                       ['g',"lld"],
+                       ['h',"dddd"],
+                       ['i',"dd"],
+                       ['j',"dlll"],
+                       ['k',"ldl"],
+                       ['l',"dldd"],
+                       ['m',"ll"],
+                       ['n',"ld"],
+                       ['o',"lll"],
+                       ['p',"dlld"],
+                       ['q',"lldl"],
+                       ['r',"dld"],
+                       ['s',"ddd"],
+                       ['t',"l"],
+                       ['u',"ddl"],
+                       ['v',"dddl"],
+                       ['w',"dll"],
+                       ['x',"lddl"],
+                       ['y',"ldll"],
+                       ['z',"lldd"],
+                       [' ',"s"]]);
+const changed="";
+const converter=(val)=>{
+{
+
+  for(var i=0;i<val.length;i++)
+  {
+   changed+=keyvalue.get(val[i]);
+  }
+  console.log(changed);
+}
+}
+export default converter;
+    </script>
+
+    <script>
+
+    function m2s(inp){
+    const keyvalue=new Map([["dl",'a'],
+                       ["lddd",'b'],
+                       ["ldld",'c'],
+                       ["ldd",'d'],
+                       ["d",'e'],
+                       ["ddld",'f'],
+                       ["lld",'g'],
+                       ["dddd",'h'],
+                       ["dd",'i'],
+                       ["dlll",'j'],
+                       ["ldl",'k'],
+                       ["dldd",'l'],
+                       ["ll",'m'],
+                       ["ld",'n'],
+                       ["lll",'o'],
+                       ["dlld",'p'],
+                       ["lldl",'q'],
+                       ["dld",'r'],
+                       ["ddd",'s'],
+                       ["l",'t'],
+                       ["ddl",'u'],
+                       ["dddl",'v'],
+                       ["dll",'w'],
+                       ["lddl",'x'],
+                       ["ldll",'y'],
+                       ["lldd",'z'],
+                       ["s",' ']]);
+    let j='';
+    for(let i of inp){
+            c=c+i;
+
+        if(i==s){
+            j=j+keyvalue.get[c];
+            c='';
+        }
+    }
+    return j;
+}
+    </script>
+    <script>
+      let counter = 0;
+
+      const socket = io({
+        ackTimeout: 10000,
+        retries: 3,
+        auth: {
+          serverOffset: 0
+        }
+      });
+
+      //const form = document.getElementById('form');
+      let input = document.querySelector(.tosent);
+      let sbutton=document.querySelector('#send');
+      const messages = document.querySelector(.morse);
+      const cht=document.getElementById('chat');
+
+      sbutton.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (input.value) {
+        minput=converter(input.value)
+          const clientOffset = `${socket.id}-${counter++}`;
+          socket.emit('chat message', minput, clientOffset);
+          input.value = '';
+        }
+      });
+
+      socket.on('chat message', (msg, serverOffset) => {
+        const item = document.createElement('li');
+        const item2 = document.createElement('li');
+        item2.textContent=m2s(msg);
+        item.textContent = msg;
+        messages.appendChild(item);
+        cht.appendChild(item2)
+        window.scrollTo(0, document.body.scrollHeight);
+        socket.auth.serverOffset = serverOffset;
+      });
+    </script>
+
+<body>
+    <div class="main">
+        <div class="header">
+            Telegraph
+            <h1>Simulation</h1>
+        </div>
+        <div class="nav">
+            <a href="">Home</a>
+            <div class="info">Telegraph ID: 00000000</div>
+        </div>
+        <div class="content">
+            <div class="dynamic_chats">
+                <img src="oldparchment.png" alt="" id="partchment">
+                <div id="chat" > </div>
+            </div>
+            <div class="inputs">
+                <div class="morse"></div>
+                <input type="text" class="tosent">
+                <div class="container">
+                    <div class="addon"></div>
+                    <div class="keyboard">
+                        <div class="row row1">
+                            <button id="key1">1</button>
+                            <button id="key2">2</button>
+                            <button id="key3">3</button>
+                            <button id="key4">4</button>
+                            <button id="key5">5</button>
+                            <button id="key6">6</button>
+                            <button id="key7">7</button>
+                            <button id="key8">8</button>
+                            <button id="key9">9</button>
+                            <button id="key0">0</button>
+                        </div>
+                        <div class="row row2">
+                            <button id="keyq">Q</button>
+                            <button id="keyw">W</button>
+                            <button id="keye">E</button>
+                            <button id="keyr">R</button>
+                            <button id="keyt">T</button>
+                            <button id="keyy">Y</button>
+                            <button id="keyu">U</button>
+                            <button id="keyi">I</button>
+                            <button id="keyo">O</button>
+                            <button id="keyp">P</button>
+                            <button id="key\">\</button>
+                        </div>
+                        <div class="row row3">
+                            <button id="keya">A</button>
+                            <button id="keys">S</button>
+                            <button id="keyd">D</button>
+                            <button id="keyf">F</button>
+                            <button id="keyg">G</button>
+                            <button id="keyh">H</button>
+                            <button id="keyj">J</button>
+                            <button id="keyk">K</button>
+                            <button id="keyl">L</button>
+                            <button id="key;">;</button>
+                        </div>
+                        <div class="row row3">
+                            <button id="keyz">Z</button>
+                            <button id="keyx">X</button>
+                            <button id="keyc">C</button>
+                            <button id="keyv">V</button>
+                            <button id="keyb">B</button>
+                            <button id="keyn">N</button>
+                            <button id="keym">M</button>
+                            <button id="key,">,</button>
+                            <button id="key.">.</button>
+                            <button id="key?">?</button>
+                            <button id="key/">/</button>
+                        </div>
+                        <div class="row4">
+                            <img src="send.png" alt="" id="send">
+                            <button id="convert">Convert</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"></div>
+    </div>
+    <script src="keyboard.js"></script>
+</body>
+</html>
