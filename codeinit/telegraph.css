@@ -1,0 +1,154 @@
+*{
+    box-sizing: border-box;
+}
+
+#partchment{
+    width: 100%;
+    overflow: hidden;
+}
+
+body{
+    margin: 0px;
+}
+
+.header{
+    font-size: 50px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.header>h1{
+    font-size: 20px;
+}
+
+.nav{
+    z-index: 1000;
+    /*position: sticky;*/
+    margin:0px;
+    top: 0px;
+    height: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    color:white;
+    font-size: 20px;
+    text-decoration: none;
+    background-color: rgb(58, 39, 0);
+    display: flex;
+    gap: 30px;
+    padding-left: 50px;
+    align-items: center;
+}
+
+.nav>a{
+    text-decoration: inherit;
+    color: white;
+}
+.main{
+    background-color: bisque;
+    position: realtive;
+}
+
+.content{
+    display: flex;
+}
+
+.dynamic_chats{
+    position: relative;
+    width: 55%;
+}
+
+.inputs{
+    padding-top: 50px;
+    width: 40%;
+}
+
+.morse{
+    width: 100%;
+    height: 20%;
+    margin-bottom: 30px;
+    background-color: burlywood;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgb(97, 78, 52);
+}
+
+.tosent{
+    width: 100%;
+    border-radius: 5px;
+    border-color: rgb(97, 78, 52);
+    background-color: transparent;
+    height: 30px;
+}
+
+.footer{
+    height: 100px;
+    background-color:burlywood;
+}
+
+/* //////////////////// */
+.nav>a:hover{
+    text-shadow:0px 0px 20px white ;
+}
+
+/* the keyboard */
+
+.row4>img{ /*sent button*/
+    width:40px;
+    position: absolute;
+    right: 90px;
+}
+
+.row4{
+    display: flex;
+    padding: 0px 20px;
+}
+
+.container{
+    margin-top: 30px;
+    width: 600px;
+    height: 240px;
+}
+
+.keyboard{
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+    /*transform: rotatex(60deg);*/
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgb(97, 78, 52);
+}
+
+.row{
+    transform: rotatex(60deg);
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+button{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 20px;
+    width: 45px;
+    background-color: burlywood;
+    height: 45px;
+    border-radius: 50%;
+    border: 4px solid rgb(80, 80, 74);
+    box-shadow: 0px 25px 5px rgb(78, 63, 42);
+    transition: all 0.2s ease;
+}
+
+#convert{
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+.addon{
+    width: 100%;
+    height: 0px;
+    margin-bottom: 5px;
+    border-bottom: 30px solid grey;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent ;
+}
